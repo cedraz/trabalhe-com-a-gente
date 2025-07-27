@@ -1,0 +1,42 @@
+
+<div class="border border-gray-700 rounded-md">
+  <div class="px-5 py-3 border-b border-gray-700">
+    <h3 class="text-xl font-semibold">{{ totalResults }} resultados de issues</h3>
+  </div>
+
+  <div class="divide-y divide-gray-700">
+    @for (issue of issues; track issue.id) {
+      <div class="px-5 py-3 flex items-start gap-3">
+        <div class="mt-1">
+          <ng-icon name="heroInformationCircle" class="text-2xl" />
+        </div>
+        <div class="flex-grow">
+          <a [href]="issue.html_url" target="_blank" class="font-semibold hover:text-blue-400 transition-colors">
+            {{ issue.title }}
+          </a>
+          <div class="text-xs text-gray-500 mt-1">
+            #{{ issue.number }} aberto em {{ issue.created_at | date:'mediumDate' }} por {{ issue.user.login }}
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p class="px-5 py-4 text-gray-400">Nenhuma issue para exibir.</p>
+    }
+  </div>
+
+  @if (issues.length > 0) {
+    <div class="px-5 py-3 border-t border-gray-700 text-center">
+      <button
+      (click)="previousPage()" [disabled]="currentPage <= 1"
+       class=" bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-l-xl">
+        Anterior
+      </button>
+
+      <span class="mx-2 text-gray-400">Página {{ currentPage }} de {{ totalPages }}</span>
+
+      <button (click)="nextPage()" class=" bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 px-4 rounded-r-xl">
+        Próxima
+      </button>
+    </div>
+  }
+</div>
