@@ -20,7 +20,19 @@ O projeto é dividido em duas partes principais: o backend (API) e o frontend (C
 
 ---
 
-## Como Rodar o Projeto
+# Como Rodar o Projeto
+
+É possível rodar o projeto localmente usando Docker ou rodando manualmente cada serviço, independente, é necessário clonar o repositório.
+
+## Usando Docker
+
+Para rodar o projeto usando Docker, você precisa ter o Docker instalado na sua máquina. O projeto já vem com um `docker-compose.yml` configurado para facilitar a execução.
+
+```
+docker compose up --build
+```
+
+## Rodando manualmente cada serviço
 
 Para executar a aplicação, você precisará ter o Node.js e o npm instalados. O projeto é um monorepo com duas pastas principais: `/api` e `/front`.
 
